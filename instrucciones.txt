@@ -1,0 +1,40 @@
+en la carpeta raiz para generar un ambiente virtual
+1- py -m venv nombreAmbiente (django-env)
+2- cd/django-env/Scripts/activate (si no funciona en una sola linea de codigo, hacer cd x cd)
+3- pip install django
+4- django-admin startproject nombreProyecto (mi-proyecto)
+5- cd CRMProject
+6- py manage.py startapp core
+
+dentro de CRMProject
+7- CRMProject>CRMProject>settings.py en INSTALLED_APPS agregar 'core'
+8- CRMProject>core crear templates, luego core y finalmente base.html con el fin de usar la plantilla base
+9- CRMProject>core> en views.py, generar una funcion para generar una vista en con index.html
+10- CRMProject>CRMProject> en urls.py, agregar una ruta para la vista generada
+11- CRMProject>CRMProject>templates/core generar el index y hacer extends con 'base.html'
+12-CRMProject>CRMProject>templates/core ir generando paginas segun sea la necesidad, e ir agregando funciones en views.py y path en urls.py
+13- CRMProject>CRMProject py manage.py startapp perfilUsuario para generaresta existencia y trabajar con ella
+
+dentro de perfilUsuario
+14- asignarlo al settings.py> INSTALLED_APPS y agregar 'perfilUsuario'
+15- ahora se trabajara en la carpeta perfilUsuario con el fin de generar una autentificacion
+16- generamos modelos (tablas) en models.py para ir poblandola con usuarios mas adelante
+17- en admin.py, incorporamos el modelo generado para verlo en modo admin
+18- en views.py, creamos una funcion para generar una vista de login
+19- generamos los templates necesarios y extendemos de base.html
+20- en urls.py, creamos una ruta para la vista de registro (en CRMProject)
+21- generamos el login en urls.py (en CRMProject)
+22- generamos el html de login (en perfilUsuario)
+23- generamos un perfil e intentamos logearnos (va a fallar ya que esta usando una url inexistente)
+24- configuramos el lugar a donde queremos llegar despues de logearnos, vamos a settings.py (CRMProject)
+25- actualizamos base.html y urls.py (CRMProject) para asignar el logout (por alguna razon no funciona con las funciones de django asi que, genera una funcion en views.py de CRMProject)
+26- py manage.py startapp dashboard, actualizar el settings.py para asignar la nueva app y generar la views y urls
+
+
+
+Codigos de ejecucion
+py manage.py runserver (ejecuta el servidor o paw web)
+py manage.py makemigrations (genera los archivos de migracion para la base de datos)
+py manage.py migrate (aplica los cambios de la base de datos)
+py manage.py createsuperuser (genera un usuario administrador para la base de datos)
+py manage.py startapp [nombreApp] (Crea apps nuevas)

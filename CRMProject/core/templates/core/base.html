@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- declaramos que aqui empezara el titulo de otras paginas y declaramos donde terminara -->
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <nav class="py-6 px-6 flex justify-between bg-teal-500">
+        <a href="/" class="text-white">CRM</a>
+        <div class="space-x-4">
+            <!-- asi se hace referencia en django a otras paginas, usando su nombre en 'url.py' -->
+            <a href="{% url 'about' %}" class="text-white">About</a>
+            {% if request.user.is_authenticated %}
+            <a href="{% url 'dashboard' %}" class="py-4 px-6 bg-teal-600 rounded-xl text-white">Dashboard</a>
+            <a href="{% url 'logout' %}" class="py-4 px-6 bg-red-600 rounded-xl text-white">Cerrar Sesion</a>
+            {% else %}
+                <a href="{% url 'login' %}" class="py-4 px-6 bg-teal-600 rounded-xl text-white">Iniciar Sesion</a>
+                <a href="{% url 'registro' %}" class="py-4 px-6 bg-teal-300 rounded-xl text-white">Registrarte</a>
+            {% endif %}
+        </div>
+    </nav>
+    <!-- declaramos que aqui empezara el contenido de otras paginas y mas abajo, declaramos donde terminara -->
+    {% block content %}
+    {% endblock %}
+
+    <footer class="py-8 text-center">
+        <p class="text-xs text-gray-700">Copyright (c) 2024 Naranjo</p>
+    </footer>
+</body>
+</html>
